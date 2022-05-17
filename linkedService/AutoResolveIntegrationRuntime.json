@@ -1,0 +1,26 @@
+{
+	"name": "AutoResolveIntegrationRuntime",
+	"properties": {
+		"parameters": {
+			"secretName": {
+				"type": "string",
+				"defaultValue": "sqlsecret"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"connectionString": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AzureKeyVault1",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": {
+					"value": "@linkedService().secretName",
+					"type": "Expression"
+				}
+			}
+		}
+	}
+}
